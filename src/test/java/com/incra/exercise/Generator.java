@@ -43,10 +43,10 @@ public class Generator {
         props.put(KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         props.put(VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.ByteArraySerializer");
 
-        props.put(CLIENT_ID_CONFIG, "generator test");
+        props.put(CLIENT_ID_CONFIG, "generator-test");
 
         Producer<String, byte[]> producer = new KafkaProducer<>(props);
-        String topic = "tracking-raw";
+        String topic = "exercise-raw";
         String msgKey = "a";
 
         for (int i = 0; i < 10; i++) {
