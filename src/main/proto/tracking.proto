@@ -1,0 +1,23 @@
+package com.incra.tutorial;
+
+option java_outer_classname = "TrackingProtos";
+
+import "common.proto";
+
+message Activity {
+  required int32 id = 1;
+  required string name = 2;
+  required string uom = 3;
+}
+
+message Tracking {
+  required Player player = 1;
+  required Activity activity = 2;
+  required int32 amount = 4;
+  required int64 tracking_date = 5; // this should be a Date (epoch date?)
+}
+
+message TrackingGroup {
+  required int32 id = 1;
+  repeated Tracking trackings = 2;
+}

@@ -1,0 +1,15 @@
+package com.incra.tutorial;
+
+option java_outer_classname = "LeaderboardProtos";
+
+import "common.proto";
+
+message PlayerScore {
+  required com.incra.tutorial.Player player = 1;
+  required int32 score = 2;
+}
+
+message Leaderboard {
+  required com.incra.tutorial.Game game = 1;
+  repeated PlayerScore playerScore = 2;
+}

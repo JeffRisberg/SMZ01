@@ -1,0 +1,27 @@
+package com.incra.tutorial;
+
+option java_outer_classname = "OperationProtos";
+
+import "common.proto";
+
+import "membership.proto";
+
+import "tracking.proto";
+
+import "leaderboard.proto";
+
+message Operation {
+
+  required int32 id = 1;
+  required int32 date = 2; // origin date
+  required EntityStatus entityStatus = 3;
+  required Action action = 4;
+
+  oneof content {
+    /* */ Join join = 8;
+    /* */ Leave leave = 9;
+    /* */ Tracking tracking = 10;
+    /* */ Leaderboard leaderboard = 11; }
+
+
+}

@@ -1,0 +1,23 @@
+package com.incra.tutorial;
+
+option java_outer_classname = "MembershipProtos";
+
+import "common.proto";
+
+message Team {
+  required int32 id = 1;
+  required string name = 2;
+  // team type?
+}
+
+message Join {
+  required Player player = 1;
+  required Team tream = 2;
+  // join date?
+}
+
+message Leave {
+  required Player player = 1;
+  required Team tream = 2;
+  // leave date?
+}

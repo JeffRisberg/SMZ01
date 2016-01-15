@@ -1,0 +1,33 @@
+package com.incra.tutorial;
+
+option java_outer_classname = "CommonProtos";
+
+enum Action {
+  CREATE = 1;
+  DELETE = 2;
+  UPDATE = 3;
+}
+
+enum EntityStatus {
+  UNKNOWN = 0;
+  ENABLED = 1;
+  PAUSED = 2;
+  DELETED = 3;
+}
+
+enum GameType {
+  SINGLE_PLAYER = 0;
+  MULTI_PLAYER = 1;
+}
+
+message Player {
+  required string name = 1;
+  required int32 id = 2;
+  optional string email = 3;
+}
+
+message Game {
+  required string name = 1;
+  required int32 id = 2;
+  required GameType type = 3;
+}
