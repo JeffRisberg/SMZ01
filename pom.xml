@@ -9,6 +9,8 @@
     <version>1.0</version>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <kafka.version>0.8.2.1</kafka.version>
         <samza.version>0.10.0</samza.version>
     </properties>
 
@@ -22,7 +24,7 @@
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.10</artifactId>
-            <version>0.9.0.0</version>
+            <version>${kafka.version}</version>
         </dependency>
 
         <dependency>
@@ -33,11 +35,6 @@
         <dependency>
             <groupId>org.apache.samza</groupId>
             <artifactId>samza-api</artifactId>
-            <version>${samza.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.samza</groupId>
-            <artifactId>samza-core_2.10</artifactId>
             <version>${samza.version}</version>
         </dependency>
         <dependency>
@@ -72,6 +69,22 @@
             <artifactId>samza-log4j</artifactId>
             <version>${samza.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>1.8.5</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-hdfs</artifactId>
@@ -83,6 +96,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
                 <configuration>
                     <!-- Use Java 7 -->
                     <source>1.7</source>

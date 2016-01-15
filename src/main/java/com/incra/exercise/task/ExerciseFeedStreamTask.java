@@ -11,8 +11,8 @@ import org.apache.samza.task.TaskCoordinator;
 import java.util.Map;
 
 /**
- * This task is very simple. All it does is receive exercise data and send them to a Kafka topic
- * called exercise-raw.
+ * This task is very simple. All it does is receive exercise data records on Kafka topic "exercise-raw" and sends
+ * to a Kafka topic "exercise-processed".
  *
  * @author Jeff Risberg
  * @since 01/09/16
@@ -23,6 +23,7 @@ public class ExerciseFeedStreamTask implements StreamTask {
     @Override
     public void process(IncomingMessageEnvelope envelope, MessageCollector collector, TaskCoordinator coordinator) {
 
+        System.out.println("begin process incoming message");
         try {
             byte[] bytes = (byte[]) envelope.getMessage();
             TrackingProtos.Tracking incomingTracking = TrackingProtos.Tracking.parseFrom(bytes);
@@ -36,5 +37,6 @@ public class ExerciseFeedStreamTask implements StreamTask {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("end process incoming message");
     }
 }
