@@ -23,6 +23,32 @@ import static org.apache.kafka.clients.producer.ProducerConfig.*;
 public class Generator {
 
     public static void main(String[] args) {
+        List<TrackingProtos.Activity> activities = new ArrayList<TrackingProtos.Activity>();
+
+        TrackingProtos.Activity.Builder activity1 = TrackingProtos.Activity.newBuilder();
+        activity1.setName("Hiking");
+        activity1.setId(1);
+        activity1.setUom("km");
+        activities.add(activity1.build());
+
+        TrackingProtos.Activity.Builder activity2 = TrackingProtos.Activity.newBuilder();
+        activity2.setName("Walking");
+        activity2.setId(2);
+        activity2.setUom("miles");
+        activities.add(activity2.build());
+
+        TrackingProtos.Activity.Builder activity3 = TrackingProtos.Activity.newBuilder();
+        activity3.setName("Running");
+        activity3.setId(3);
+        activity3.setUom("km");
+        activities.add(activity3.build());
+
+        TrackingProtos.Activity.Builder activity4 = TrackingProtos.Activity.newBuilder();
+        activity4.setName("Dancing");
+        activity4.setId(4);
+        activity4.setUom("hours");
+        activities.add(activity4.build());
+
         Properties props = new Properties();
         props.put(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 
@@ -53,11 +79,10 @@ public class Generator {
             System.out.println("Sending: " + i);
 
             try {
-                TrackingProtos.Tracking tracking = createMessage();
+                TrackingProtos.Tracking tracking = createMessage(activities);
 
                 System.out.println(tracking);
                 byte[] msgContent = tracking.toByteArray();
-                System.out.println(msgContent);
 
                 producer.send(new ProducerRecord<>(topic, msgKey, msgContent)).get();
             } catch (Exception e) {
@@ -74,21 +99,18 @@ public class Generator {
         producer.close();
     }
 
-    static TrackingProtos.Tracking createMessage() throws IOException {
+    static TrackingProtos.Tracking createMessage(List<TrackingProtos.Activity> activities) throws IOException {
+        TrackingProtos.Activity activity = activities.get((int) (activities.size() * Math.random()));
+
         int amount = (int) (Math.random() * 15);
         TrackingProtos.Tracking.Builder message = TrackingProtos.Tracking.newBuilder();
-
-        TrackingProtos.Activity.Builder activity = TrackingProtos.Activity.newBuilder();
-        activity.setName("Running");
-        activity.setId(1);
-        activity.setUom("km");
 
         CommonProtos.Player.Builder player = CommonProtos.Player.newBuilder();
         player.setId(1);
         player.setName("Winston Smith");
         player.setEmail("winston@minitru.com");
 
-        message.setActivity(activity.build());
+        message.setActivity(activity);
         message.setPlayer(player.build());
         message.setAmount(amount);
         message.setTrackingDate(System.currentTimeMillis());
