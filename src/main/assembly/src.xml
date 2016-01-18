@@ -60,7 +60,7 @@
         <include>org.apache.samza:samza-kv-inmemory_2.10</include>
         <include>org.apache.samza:samza-kv-rocksdb_2.10</include>
         <include>org.apache.samza:samza-log4j</include>
-        <include>com.incra:exercise</include>
+        <include>com.incra:SMZ01</include>
         <include>org.slf4j:slf4j-log4j12</include>
         <include>org.slf4j:slf4j-api</include>
         <include>org.apache.kafka:kafka_2.10</include>

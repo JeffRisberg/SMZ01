@@ -5,11 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.incra</groupId>
-    <artifactId>exercise</artifactId>
+    <artifactId>SMZ01</artifactId>
     <version>1.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <protobuf.version>2.6.1</protobuf.version>
         <kafka.version>0.8.2.1</kafka.version>
         <samza.version>0.10.0</samza.version>
     </properties>
@@ -18,7 +19,7 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>2.6.1</version>
+            <version>${protobuf.version}</version>
         </dependency>
 
         <dependency>
