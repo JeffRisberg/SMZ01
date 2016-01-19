@@ -22,6 +22,4 @@ message Operation {
     /* */ Leave leave = 9;
     /* */ Tracking tracking = 10;
     /* */ Leaderboard leaderboard = 11; }
-
-
 }

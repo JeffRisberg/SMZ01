@@ -102,7 +102,7 @@ public class Generator {
     static TrackingProtos.Tracking createMessage(List<TrackingProtos.Activity> activities) throws IOException {
         TrackingProtos.Activity activity = activities.get((int) (activities.size() * Math.random()));
 
-        int amount = (int) (Math.random() * 15);
+        int amount = 3 + (int) (Math.random() * 15);
         TrackingProtos.Tracking.Builder message = TrackingProtos.Tracking.newBuilder();
 
         CommonProtos.Player.Builder player = CommonProtos.Player.newBuilder();
